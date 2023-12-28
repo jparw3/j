@@ -1,0 +1,38 @@
+---
+import "../style.css";
+import { links } from "../data";
+import Layout from "../components/Layout.astro";
+
+const londonTimeZone = "Europe/London";
+const date = new Date();
+const localDate = new Date(
+  date.toLocaleString("en-US", { timeZone: londonTimeZone })
+);
+
+const hour = localDate.getHours() % 12 || 12;
+const formattedMinutes = localDate.getMinutes().toString().padStart(2, "0");
+const period = localDate.getHours() < 12 ? "AM" : "PM";
+const year = localDate.getFullYear();
+---
+
+<Layout title="jack willars">
+  <div class="column">
+	<p>Experimenting</p>
+    <p class="timeline">B. 2003. Based in UK,</p>
+    <p class="timeline">
+        {hour}<span class="blink">:</span>{formattedMinutes} {period}
+    </p>
+    <p>Developing / Designing at BSPOKE Software.</p>
+
+    {
+      links.map((link, i) => (
+        <>
+          <a href={link.to} target="_blank">{link.label}</a>
+          {i < links.length - 1 ? <span>·</span> : null}
+        </>
+      ))
+    }
+
+    <p class="footer">© {year} jack willars.</p>
+  </div>
+</Layout>
