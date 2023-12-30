@@ -2,22 +2,12 @@
 import "../style.css";
 import { links } from "../data";
 import Layout from "../components/Layout.astro";
-
-const response = await fetch("https://worldtimeapi.org/api/timezone/Europe/London")
-const data = await response.json()
-const hour = data.datetime.split("T")[1].split(":")[0] % 12 || 12
-const minute = data.datetime.split("T")[1].split(":")[1]
-const period = data.datetime.split("T")[1].split(":")[0] < 12 ? "AM" : "PM"
 ---
 
 <Layout title="jack willars">
   <div class="column">
     <p>Experimenting</p>
     <p class="timeline">B. 2003. Based in UK,</p>
-    <p class="timeline">
-      {hour}<span class="blink">:</span>{minute}
-      {period}
-    </p>
     <p>Developing / Designing at BSPOKE Software.</p>
 
     {
