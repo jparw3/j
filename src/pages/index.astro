@@ -13,10 +13,7 @@ import Layout from "../components/Layout.astro";
     {
       links.map((link, i) => (
         <>
-          <a href={link.to} target="_blank">
-            {link.label}
-          </a>
-          {i < links.length - 1 ? <span>·</span> : null}
+          <a href={link.to} target="_blank">{link.label}</a>{i < links.length - 1 ? <span> ·</span> : null}
         </>
       ))
     }
